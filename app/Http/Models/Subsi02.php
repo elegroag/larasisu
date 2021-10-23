@@ -9,15 +9,13 @@ class Subsi02 extends Model
 
 	protected $primaryKey = "nit";
 
-	protected $incrementing = false;
-
 	protected $fillable = [
 		"nit","coddoc","razsoc","nomemp","cedrep","repleg","codciu","telefono","codzon","codact","codind","fecafi","fecsis","estado"
 	];
 
 	public function sucursales()
 	{
-		return $this->belongsToMany(Subsi48::class, 'subsi48', 'nit', 'nit');
+		return $this->belongsToMany(Subsi48::class, 'subsi02', 'nit', 'nit');
 	}
 
 }

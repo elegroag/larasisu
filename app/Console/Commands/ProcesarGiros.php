@@ -2,6 +2,7 @@
 namespace sisu\Console\Commands;
 
 use sisu\Http\Models\Subsi02;
+use sisu\Http\Models\Subsi48;
 use Illuminate\Console\Command;
 
 class ProcesarGiros extends Command
@@ -37,7 +38,21 @@ class ProcesarGiros extends Command
 	 */
 	public function handle()
 	{
-		$empresa =  Subsi02::find($this->argument('nit'));
-		$this->info('Display :'.$empresa->cedrep);
+		$this->buscar_sucursal();
+	}
+
+	public function buscar_sucursal()
+	{
+		$sucursales =  Subsi02::where("nit",'=','1045017137')->get()->first()->sucursales;
+		foreach ($sucursales as $sucursal) 
+		{
+			$this->info('Display :'.$sucursal->detalle);
+		}
+	}
+
+	public function buscar_empresa()
+	{
+		$empresa =  Subsi48::where("nit",'=','24289833')->where("codsuc",'=','001')->get()->first()->empresa;
+		$this->info('Display :'.$empresa->razsoc);
 	}
 }

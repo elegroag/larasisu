@@ -9,8 +9,6 @@ class Subsi48 extends Model
 	
 	protected $primaryKey = "nit";
 
-	protected $incrementing = false;
-
 	protected $fillable = [
 		"nit","codsuc","fecafi","detalle","estado"
 	];
